@@ -62,10 +62,10 @@ static int __init mymodule_init(void)
 
     printk("trying noscope swagshot\n");
     printk("420 NOSCOPE READ A BYTE, %d\n", * (uint8_t *) (vmapped + offset_in_page(target)));
-
     if (0x3 == * (uint8_t *) (vmapped + offset_in_page(target))) { 
         /* CORRECT BYTE LET THE YOLOPATCHING BEGIN */
     * (uint8_t *) (vmapped + offset_in_page(target)) = 0x09;
+    flush_icache_range(target - 100, target + 100);
     printk("420 NOSCOPE SWAGSHOTTED #yolo #swag #420\n");
     } else {
         printk("DIDNT FIND THE EXPECTED BYTE, NO PATCH DONE\n");
