@@ -1,0 +1,39 @@
+[   42.956498] yolopatch: module license 'BSD' taints kernel.
+[   42.956506] Disabling lock debugging due to kernel taint
+[   42.957149] 420 NOSCOPE SWAGSHOT.
+[   42.957211] BUG: unable to handle kernel paging request at ffffffff81360853
+[   42.958748] IP: [<ffffffffa0826012>] mymodule_init+0x12/0x1e [yolopatch]
+[   42.960030] PGD 1814067 PUD 1815063 PMD 12001e1 
+[   42.960030] Oops: 0003 [#1] PREEMPT SMP 
+[   42.960030] Modules linked in: yolopatch(PO+) ipt_REJECT xt_tcpudp nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_conntrack iptable_filter ip_tables x_tables uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core videodev media arc4 brcmsmac cordic brcmutil b43 mac80211 iTCO_wdt joydev mousedev snd_hda_codec_realtek iTCO_vendor_support cfg80211 snd_hda_codec_generic ssb rng_core pcmcia pcmcia_core acer_wmi sparse_keymap led_class rfkill coretemp hwmon evdev microcode rtsx_pci_ms pcspkr psmouse mac_hid memstick serio_raw r8169 bcma snd_hda_intel snd_hda_controller mii i2c_i801 lpc_ich snd_hda_codec i915 snd_hwdep thermal snd_pcm snd_timer snd drm_kms_helper wmi acpi_cpufreq intel_agp video battery processor shpchp drm i2c_algo_bit i2c_core soundcore button ac intel_gtt ext4 crc16 mbcache jbd2
+[   42.960030]  sha256_ssse3 sha256_generic cbc dm_crypt dm_mod sd_mod crct10dif_generic crc_t10dif crct10dif_common rtsx_pci_sdmmc mmc_core atkbd libps2 ahci libahci ehci_pci uhci_hcd ehci_hcd libata scsi_mod usbcore usb_common rtsx_pci i8042 serio
+[   42.960030] CPU: 0 PID: 728 Comm: insmod Tainted: P           O  3.15.1-1-ARCH #1
+[   42.960030] Hardware name: Acer AOD257/JE06_PT , BIOS V1.15 10/21/2011
+[   42.988871] task: ffff88003d36f010 ti: ffff880039238000 task.ti: ffff880039238000
+[   42.988871] RIP: 0010:[<ffffffffa0826012>]  [<ffffffffa0826012>] mymodule_init+0x12/0x1e [yolopatch]
+[   42.988871] RSP: 0018:ffff88003923bd00  EFLAGS: 00010286
+[   42.988871] RAX: 0000000000000015 RBX: 0000000000000000 RCX: 0000000000000000
+[   42.988871] RDX: 0000000000000000 RSI: ffff88003f20e488 RDI: 0000000000000246
+[   42.988871] RBP: ffff88003923bd00 R08: 0000000000000082 R09: 00000000000002c5
+[   42.988871] R10: ffffffff8117d682 R11: 2e544f4853474157 R12: ffffffffa0826000
+[   42.988871] R13: ffffffffa08240d0 R14: 0000000000000001 R15: ffffffffa0824080
+[   42.988871] FS:  00007f2b967e6700(0000) GS:ffff88003f200000(0000) knlGS:0000000000000000
+[   42.988871] CS:  0010 DS: 0000 ES: 0000 CR0: 000000008005003b
+[   42.988871] CR2: ffffffff81360853 CR3: 000000003bed8000 CR4: 00000000000007f0
+[   42.988871] Stack:
+[   42.988871]  ffff88003923bd78 ffffffff81002162 0000000000000001 ffffffffa0824080
+[   42.988871]  00000000ffffffff 0000000000000000 ffff88003923bd68 ffffffff81091f42
+[   42.988871]  ffff88003923bef0 ffffffffa0824098 0000000064de0bc2 ffff88003923bef0
+[   42.988871] Call Trace:
+[   42.988871]  [<ffffffff81002162>] do_one_initcall+0xf2/0x1b0
+[   42.988871]  [<ffffffff81091f42>] ? __blocking_notifier_call_chain+0x52/0x60
+[   42.988871]  [<ffffffff810e998e>] load_module+0x1e0e/0x2580
+[   42.988871]  [<ffffffff810e6110>] ? store_uevent+0x70/0x70
+[   42.988871]  [<ffffffff811ba307>] ? kernel_read+0x57/0x90
+[   42.988871]  [<ffffffff810ea2c6>] SyS_finit_module+0xa6/0xe0
+[   42.988871]  [<ffffffff815159a9>] system_call_fastpath+0x16/0x1b
+[   42.988871] Code: <c6> 04 25 53 08 36 81 09 31 c0 5d c3 00 00 00 00 00 00 55 00 00 00 
+[   42.988871] RIP  [<ffffffffa0826012>] mymodule_init+0x12/0x1e [yolopatch]
+[   42.988871]  RSP <ffff88003923bd00>
+[   42.988871] CR2: ffffffff81360853
+[   42.988871] ---[ end trace 1df10f46673083b4 ]---
