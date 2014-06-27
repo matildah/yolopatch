@@ -1,0 +1,6 @@
+yolopatch -- when ksplice is too much hard work
+
+if you don't know exactly what this code does, running it may cause weird
+shit to happen. I don't know what exactly can happen when you try to "patch"
+code that is being run but i don't think it's the best idea honestly.
+
