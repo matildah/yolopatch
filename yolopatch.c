@@ -16,17 +16,58 @@
 
 #include <linux/module.h>
 #include <linux/init.h>
+#include <linux/module.h>
+#include <linux/version.h>
+#include <linux/bug.h>
+#include <linux/ctype.h>
+#include <linux/debugfs.h>
+#include <linux/errno.h>
+#include <linux/kallsyms.h>
+#include <linux/kobject.h>
+#include <linux/kthread.h>
+#include <linux/pagemap.h>
+#include <linux/sched.h>
+#include <linux/sort.h>
+#include <linux/stop_machine.h>
+#include <linux/sysfs.h>
+#include <linux/time.h>
+#include <linux/uaccess.h>
+#include <asm/uaccess.h>
+#include <linux/vmalloc.h>
+#include <linux/slab.h>
 
 static int __init mymodule_init(void)
 {
-    printk ("420 NOSCOPE SWAGSHOT.\n");
-    *(unsigned char *) 0xffffffff81360853 = 0x9;
+    uint8_t *target = 0xffffffff81360853;
+    struct page **pages = kmalloc(sizeof(*pages), GFP_KERNEL);
+    void *vmapped;
+
+    if (NULL == pages) {
+        return 69;
+    }
+
+    pages[0] = virt_to_page((void *) ((uint64_t) target & PAGE_MASK));
+    
+    if (NULL == pages[0]) {
+        kfree(pages);
+        return 69;
+    }
+
+    vmapped = vmap(pages, 1, VM_MAP, PAGE_KERNEL);
+    kfree(pages);
+    if (NULL == vmapped) {
+        return 42;
+    }
+
+    printk("trying noscope swagshot\n");
+    * (uint8_t *) (vmapped + offset_in_page(target)) = 0x09;
+    printk("420 NOSCOPE SWAGSHOTTED #yolo #swag #420\n");
     return 0;
 }
 
 static void __exit mymodule_exit(void)
 {
-    printk ("Unloading my module.\n");
+    printk("Unloading my module.\n");
     return;
 }
 
