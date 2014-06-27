@@ -38,7 +38,7 @@
 
 static int __init mymodule_init(void)
 {
-    uint8_t *target = 0xffffffff81360853;
+    uint8_t *target = 0xffffffff8135a5e3;
     struct page **pages = kmalloc(sizeof(*pages), GFP_KERNEL);
     void *vmapped;
 
@@ -63,6 +63,7 @@ static int __init mymodule_init(void)
     printk("trying noscope swagshot\n");
     /* * (uint8_t *) (vmapped + offset_in_page(target)) = 0x09; */
     printk("420 NOSCOPE READ A BYTE, %d\n", * (uint8_t *) (vmapped + offset_in_page(target)));
+    vunmap(vmapped);
     printk("420 NOSCOPE SWAGSHOTTED #yolo #swag #420\n");
     return 0;
 }
