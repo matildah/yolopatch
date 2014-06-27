@@ -1,0 +1,9 @@
+[ 1321.311136] entering mymodule_init 
+[ 1321.311195] trying noscope swagshot
+[ 1321.311205] 420 NOSCOPE READ A BYTE, 3
+[ 1321.311213] 420 NOSCOPE SWAGSHOTTED #yolo #swag #420
+[ 1333.304678] Unloading my module.
+[ 1335.077679] entering mymodule_init 
+[ 1335.077722] trying noscope swagshot
+[ 1335.077728] 420 NOSCOPE READ A BYTE, 9
+[ 1335.077732] DIDNT FIND THE EXPECTED BYTE, NO PATCH DONE
