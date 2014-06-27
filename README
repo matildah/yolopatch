@@ -1,6 +1,10 @@
 yolopatch -- when ksplice is too much hard work
 
+this is code for a loadable kernel module that when inserted, patches a byte
+in your kernel's address space. 
+
 if you don't know exactly what this code does, running it may cause weird
 shit to happen. I don't know what exactly can happen when you try to "patch"
-code that is being run but i don't think it's the best idea honestly.
+code that is being run but i don't think it's the best idea. also make sure
+you have the right address.
 
